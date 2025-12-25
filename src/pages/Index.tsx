@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { BubboGallery, FloatingBubbos } from "@/components/BubboGallery";
-import { HeroParticles, AmbientOrbs, GradientMesh } from "@/components/HeroParticles";
+import { HeroParticles, AmbientOrbs, GradientMesh, Sparkles } from "@/components/HeroParticles";
 import { GlassCard } from "@/components/GlassCard";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 import { FollowCursorBubbo, InteractiveBubbo } from "@/components/InteractiveBubbo";
@@ -66,9 +66,11 @@ const Index = () => {
     <Layout>
       {/* Hero Section - Clean & Elegant */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Subtle background */}
+        {/* Enhanced background layers */}
         <GradientMesh />
         <AmbientOrbs />
+        <HeroParticles />
+        <Sparkles />
 
         {/* Main Content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
