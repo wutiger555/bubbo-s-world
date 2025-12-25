@@ -205,7 +205,7 @@ const Features = () => {
                 </div>
               ))}
             </div>
-            <p className="text-center text-xs text-muted-foreground/50 mt-2">← 左右滑動查看更多 →</p>
+            <p className="text-center text-xs text-muted-foreground/50 mt-2">← Swipe to explore →</p>
           </div>
 
           {/* Desktop: Grid */}
@@ -243,41 +243,89 @@ const Features = () => {
         </div>
       </section>
 
-      {/* Feature List - Minimal */}
-      <section className="py-16 md:py-24 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <ScrollReveal className="max-w-3xl mx-auto">
-            <div className="text-center mb-8 md:mb-16">
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">
-                And <span className="gradient-text">More</span>
-              </h2>
-            </div>
-            
-            <div className="space-y-3 md:space-y-6">
+      {/* Feature List - Premium Glass Design */}
+      <section className="py-16 md:py-24 overflow-hidden relative">
+        {/* Ambient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bubly-violet/5 via-bubly-pink/3 to-bubly-sky/5 pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-bubly-violet/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/3 right-1/4 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-bubly-pink/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <ScrollReveal className="text-center mb-10 md:mb-16">
+            <span className="inline-block px-3 md:px-4 py-1 md:py-1.5 rounded-full glass text-[10px] md:text-xs font-medium text-muted-foreground mb-3 md:mb-4 tracking-wide uppercase">
+              Additional Features
+            </span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-6">
+              And There's <span className="gradient-text">So Much More</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-lg">
+              Discover the full suite of features designed to make relationship management effortless
+            </p>
+          </ScrollReveal>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {[
-                { title: "Relationship Tracking", desc: "Record every interaction and understand contact frequency" },
-                { title: "Custom Labels & Tags", desc: "Flexible tagging system to organize contacts your way" },
-                { title: "Smart Date Management", desc: "All important dates managed in one intuitive calendar" },
-                { title: "Message Templates", desc: "Common greetings ready to personalize and send" },
-                { title: "Quick Actions", desc: "Clean interface for fast task completion" },
-                { title: "Privacy First", desc: "Your data stays on your device, always secure" },
+                {
+                  icon: "🔄",
+                  title: "Relationship Tracking",
+                  desc: "Record every interaction and understand contact frequency with intelligent insights"
+                },
+                {
+                  icon: "🏷️",
+                  title: "Custom Labels & Tags",
+                  desc: "Flexible tagging system to organize contacts your way with unlimited categories"
+                },
+                {
+                  icon: "📅",
+                  title: "Smart Date Management",
+                  desc: "All important dates managed in one intuitive calendar with smart reminders"
+                },
+                {
+                  icon: "💬",
+                  title: "Message Templates",
+                  desc: "Common greetings ready to personalize and send in seconds"
+                },
+                {
+                  icon: "⚡",
+                  title: "Quick Actions",
+                  desc: "Clean interface for fast task completion and seamless workflow"
+                },
+                {
+                  icon: "🔒",
+                  title: "Privacy First",
+                  desc: "Your data stays on your device, always secure and under your control"
+                },
               ].map((item, index) => (
-                <ScrollReveal key={item.title} delay={index * 80} direction="up">
-                  <div className="group flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl md:rounded-2xl transition-all duration-500 hover:bg-white/5 border border-transparent hover:border-white/10">
-                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-gradient-bubly mt-2 md:mt-2.5 group-hover:scale-150 transition-transform duration-500 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-base md:text-lg mb-0.5 md:mb-1 group-hover:gradient-text transition-all duration-500">
+                <ScrollReveal key={item.title} delay={index * 100} direction="up">
+                  <div className="group relative">
+                    {/* Glass card with gradient border */}
+                    <div className="absolute -inset-[1px] bg-gradient-to-br from-bubly-violet/20 via-bubly-pink/20 to-bubly-sky/20 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="relative glass rounded-2xl md:rounded-3xl p-5 md:p-8 transition-all duration-500 group-hover:shadow-[0_20px_60px_-15px_rgba(167,139,250,0.3)] group-hover:-translate-y-1">
+                      {/* Icon with glow effect */}
+                      <div className="relative inline-block mb-3 md:mb-4">
+                        <div className="absolute inset-0 bg-gradient-bubly rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                        <div className="relative text-3xl md:text-4xl w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                          {item.icon}
+                        </div>
+                      </div>
+
+                      <h3 className="font-bold text-base md:text-xl mb-2 md:mb-3 group-hover:gradient-text transition-all duration-500">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground text-xs md:text-sm">
+                      <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">
                         {item.desc}
                       </p>
+
+                      {/* Decorative gradient line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-bubly rounded-b-2xl md:rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 

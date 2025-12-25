@@ -231,7 +231,31 @@ import NewPage from "./pages/NewPage";
 
 ## 🌐 部署
 
-### Vercel (推薦)
+本專案已設定 **GitHub Pages 自動部署**。
+
+### GitHub Pages 部署（推薦）
+
+每次推送到 `main` 分支時，會自動觸發部署：
+
+```bash
+git add .
+git commit -m "你的更新訊息"
+git push origin main
+
+# 2-3 分鐘後，更新會自動上線
+```
+
+**網站 URL**: `https://your-username.github.io/bubbo-s-world/`
+
+📖 詳細設定步驟請參考：
+- [QUICK_DEPLOY_GUIDE.md](./QUICK_DEPLOY_GUIDE.md) - 5 分鐘快速指南
+- [DEPLOYMENT.md](./DEPLOYMENT.md) - 完整部署文件
+
+### 其他部署選項
+
+<details>
+<summary>Vercel</summary>
+
 ```bash
 # 安裝 Vercel CLI
 npm i -g vercel
@@ -239,33 +263,41 @@ npm i -g vercel
 # 部署
 vercel
 ```
+</details>
 
-### Netlify
+<details>
+<summary>Netlify</summary>
+
 ```bash
 # 建置
 npm run build
 
 # 上傳 dist/ 資料夾到 Netlify
 ```
+</details>
 
-### 自訂伺服器
+<details>
+<summary>自訂伺服器</summary>
+
 ```bash
 npm run build
 # 將 dist/ 資料夾內容部署到任何靜態檔案伺服器
 ```
+</details>
 
 ---
 
 ## 🛠 技術堆疊
 
 - **框架**: React 18 + TypeScript
-- **建置工具**: Vite 5
+- **建置工具**: Vite 7
 - **樣式**: Tailwind CSS 3
-- **UI 元件**: shadcn/ui
+- **UI 元件**: shadcn/ui (Radix UI)
 - **動畫**: Framer Motion
 - **路由**: React Router v6
 - **圖示**: Lucide React
 - **字型**: Plus Jakarta Sans (Google Fonts)
+- **部署**: GitHub Pages (自動化 CI/CD)
 
 ---
 
@@ -335,11 +367,18 @@ npm run build
 
 ## 🎉 更新日誌
 
+### v1.2.0 (2025-12-26)
+- 🚀 設定 GitHub Pages 自動部署
+- 🎨 更新網站 Logo 為官方 Bubbo Avatar
+- 🧹 移除所有第三方品牌元素
+- ⚡ 升級至 Vite 7
+- 📝 新增完整部署文件
+
 ### v1.1.0 (2025-12-26)
 - ✨ 新增互動式 AI 助手 Demo
 - 🎨 優化 Bubbo 動畫效果
 - 📱 改善行動裝置體驗
-- 🐛 修復 CSS import 警告
+- 🐛 修復 React key 警告與 CSS import 警告
 
 ### v1.0.0 (2024)
 - 🎉 初版發布
