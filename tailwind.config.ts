@@ -117,6 +117,18 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        "particle-float": {
+          "0%": { transform: "translateY(0) translateX(0)", opacity: "0" },
+          "10%": { opacity: "1" },
+          "90%": { opacity: "1" },
+          "100%": { transform: "translateY(-100vh) translateX(20px)", opacity: "0" },
+        },
+        "drift": {
+          "0%, 100%": { transform: "translateX(0) translateY(0)" },
+          "25%": { transform: "translateX(10px) translateY(-10px)" },
+          "50%": { transform: "translateX(0) translateY(-20px)" },
+          "75%": { transform: "translateX(-10px) translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -132,6 +144,8 @@ export default {
         "spin-slow": "spin-slow 20s linear infinite",
         "bounce-soft": "bounce-soft 2s ease-in-out infinite",
         "shimmer": "shimmer 3s linear infinite",
+        "particle-float": "particle-float 20s linear infinite",
+        "drift": "drift 8s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
