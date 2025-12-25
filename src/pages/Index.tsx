@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Bubbo } from "@/components/Bubbo";
 import { BubboGallery, FloatingBubbos } from "@/components/BubboGallery";
+import { HeroParticles, AmbientOrbs, GradientMesh } from "@/components/HeroParticles";
 import { GlassCard } from "@/components/GlassCard";
 import { Users, Sparkles, Bell, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -31,39 +33,67 @@ const features = [
 ];
 
 const Index = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Immersive */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Layered backgrounds */}
+        <GradientMesh />
+        <AmbientOrbs />
+        <HeroParticles />
+        
         {/* Floating decorative Bubbos */}
         <FloatingBubbos />
-        <div className="container mx-auto px-4 py-20">
+        
+        {/* Content with parallax */}
+        <div 
+          className="container mx-auto px-4 py-20 relative z-10"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        >
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             {/* Text Content */}
-            <div className="flex-1 text-center lg:text-left">
-              <div className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-6 animate-fade-in">
-                ✨ Your Social Companion
+            <div 
+              className="flex-1 text-center lg:text-left"
+              style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+            >
+              <div className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-6 animate-fade-in backdrop-blur-md">
+                <span className="mr-2 animate-pulse">✨</span>
+                Your Social Companion
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-slide-up">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 animate-slide-up tracking-tight">
                 <span className="gradient-text">Manage contacts.</span>
                 <br />
                 <span className="text-foreground">Stay close.</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+              <p 
+                className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 animate-slide-up leading-relaxed"
+                style={{ animationDelay: "0.1s" }}
+              >
                 Bubly is your intelligent social assistant that helps you nurture relationships, 
                 send thoughtful greetings, and never forget the moments that matter.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: "0.2s" }}>
+              <div 
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" 
+                style={{ animationDelay: "0.2s" }}
+              >
                 <a
                   href="https://apps.apple.com/app/bubly-social-assistant/id6754884488"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-bubly text-white font-semibold transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-lg"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-bubly text-white font-semibold transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(167,139,250,0.5)] hover:scale-[1.02] shadow-lg"
                 >
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                   </svg>
                   Download on App Store
@@ -71,7 +101,7 @@ const Index = () => {
                 
                 <Link
                   to="/features"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full glass font-semibold transition-all duration-300 hover:bg-white/80 group"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-500 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20"
                 >
                   Learn More
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -79,16 +109,42 @@ const Index = () => {
               </div>
             </div>
             
-            {/* Bubbo Mascot */}
-            <div className="flex-1 flex justify-center relative">
+            {/* Bubbo Mascot with parallax */}
+            <div 
+              className="flex-1 flex justify-center relative"
+              style={{ transform: `translateY(${scrollY * -0.15}px)` }}
+            >
               <div className="relative">
-                {/* Decorative rings - subtle */}
-                <div className="absolute inset-0 -m-12 rounded-full border border-bubly-sky/10 animate-breathe" />
-                <div className="absolute inset-0 -m-20 rounded-full border border-bubly-violet/5 animate-breathe" style={{ animationDelay: "1s" }} />
+                {/* Animated orbital rings */}
+                <div className="absolute inset-0 -m-16 rounded-full border border-bubly-sky/10 animate-spin-slow" style={{ animationDuration: "25s" }} />
+                <div className="absolute inset-0 -m-24 rounded-full border border-bubly-violet/8 animate-spin-slow" style={{ animationDuration: "35s", animationDirection: "reverse" }} />
+                <div className="absolute inset-0 -m-32 rounded-full border border-bubly-pink/5 animate-spin-slow" style={{ animationDuration: "45s" }} />
                 
-                <Bubbo size="xl" className="animate-float-gentle" />
+                {/* Glowing backdrop */}
+                <div className="absolute inset-0 -m-8 rounded-full bg-gradient-radial from-bubly-violet/20 via-transparent to-transparent blur-3xl animate-breathe" />
+                
+                <Bubbo size="xl" className="animate-float-gentle drop-shadow-[0_30px_60px_rgba(167,139,250,0.3)]" />
+                
+                {/* Floating accent dots */}
+                <div className="absolute -top-4 -right-4 w-3 h-3 rounded-full bg-bubly-sky/60 animate-drift" />
+                <div className="absolute -bottom-2 -left-6 w-2 h-2 rounded-full bg-bubly-pink/50 animate-drift" style={{ animationDelay: "2s" }} />
+                <div className="absolute top-1/2 -right-8 w-2.5 h-2.5 rounded-full bg-bubly-violet/40 animate-drift" style={{ animationDelay: "4s" }} />
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in"
+          style={{ 
+            animationDelay: "1s",
+            opacity: Math.max(0, 1 - scrollY / 200)
+          }}
+        >
+          <span className="text-xs text-muted-foreground/50 tracking-widest uppercase">Scroll</span>
+          <div className="w-5 h-8 rounded-full border border-muted-foreground/20 flex justify-center pt-2">
+            <div className="w-1 h-2 rounded-full bg-muted-foreground/40 animate-bounce-soft" />
           </div>
         </div>
       </section>
