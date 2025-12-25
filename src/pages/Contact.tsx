@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
-import { Bubbo } from "@/components/Bubbo";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
+import { InteractiveBubbo } from "@/components/InteractiveBubbo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -118,7 +118,13 @@ const Contact = () => {
                 <div className="absolute inset-0 -m-16 rounded-full border border-bubly-violet/10 animate-spin-slow" style={{ animationDuration: "30s" }} />
                 <div className="absolute inset-0 -m-24 rounded-full border border-bubly-pink/5 animate-spin-slow" style={{ animationDuration: "45s", animationDirection: "reverse" }} />
                 
-                <Bubbo size="xl" className="relative animate-float-gentle drop-shadow-[0_30px_60px_rgba(167,139,250,0.4)]" />
+                <InteractiveBubbo 
+                  size="xl" 
+                  initialPose="wave" 
+                  hoverPose="point" 
+                  enableClick={true}
+                  showTooltip={true}
+                />
                 
                 {/* Floating elements */}
                 <div className="absolute -top-4 -right-8 w-3 h-3 rounded-full bg-bubly-sky/60 animate-drift" />

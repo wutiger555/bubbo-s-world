@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
-import { Bubbo } from "@/components/Bubbo";
 import { BubboGallery, FloatingBubbos } from "@/components/BubboGallery";
 import { HeroParticles, AmbientOrbs, GradientMesh } from "@/components/HeroParticles";
 import { GlassCard } from "@/components/GlassCard";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
+import { FollowCursorBubbo, InteractiveBubbo } from "@/components/InteractiveBubbo";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -16,12 +16,18 @@ import screenshot4 from "@/assets/app-screenshot-4.png";
 import screenshot5 from "@/assets/app-screenshot-5.png";
 import screenshot6 from "@/assets/app-screenshot-6.png";
 
+// Bubbo poses for features
+import bubboThinking from "@/assets/bubbo-thinking.png";
+import bubboPoint from "@/assets/bubbo-point.png";
+import bubboWave from "@/assets/bubbo-wave.png";
+
 const coreFeatures = [
   {
     title: "Smart Contacts",
     subtitle: "Know Your Bubbles",
     description: "Track hobbies, interests, and milestones. Add personal notes and never forget what matters.",
     screenshot: screenshot5,
+    bubbo: bubboThinking,
     gradient: "from-bubly-sky/30 via-bubly-violet/20 to-bubly-pink/30",
   },
   {
@@ -29,6 +35,7 @@ const coreFeatures = [
     subtitle: "Craft Perfect Wishes",
     description: "Generate personalized messages in any vibe—warm, fun, formal, or short.",
     screenshot: screenshot4,
+    bubbo: bubboWave,
     gradient: "from-bubly-pink/30 via-bubly-violet/20 to-bubly-sky/30",
   },
   {
@@ -36,6 +43,7 @@ const coreFeatures = [
     subtitle: "Never Miss a Moment",
     description: "Track birthdays, anniversaries, and special moments with an intelligent calendar.",
     screenshot: screenshot6,
+    bubbo: bubboPoint,
     gradient: "from-bubly-violet/30 via-bubly-pink/20 to-bubly-sky/30",
   },
 ];
@@ -128,10 +136,8 @@ const Index = () => {
                 <div className="absolute inset-0 -m-24 rounded-full border border-bubly-violet/8 animate-spin-slow" style={{ animationDuration: "35s", animationDirection: "reverse" }} />
                 <div className="absolute inset-0 -m-32 rounded-full border border-bubly-pink/5 animate-spin-slow" style={{ animationDuration: "45s" }} />
                 
-                {/* Glowing backdrop */}
-                <div className="absolute inset-0 -m-8 rounded-full bg-gradient-radial from-bubly-violet/20 via-transparent to-transparent blur-3xl animate-breathe" />
-                
-                <Bubbo size="xl" className="animate-float-gentle drop-shadow-[0_30px_60px_rgba(167,139,250,0.3)]" />
+                {/* Interactive Bubbo that follows cursor */}
+                <FollowCursorBubbo size="xl" />
                 
                 {/* Floating accent dots */}
                 <div className="absolute -top-4 -right-4 w-3 h-3 rounded-full bg-bubly-sky/60 animate-drift" />
@@ -306,7 +312,7 @@ const Index = () => {
                 className="group"
               >
                 <div className="relative h-full">
-                  {/* Screenshot with glow */}
+                  {/* Screenshot with glow and floating Bubbo */}
                   <div className="relative mb-8">
                     <div className={`absolute -inset-4 bg-gradient-to-br ${feature.gradient} rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-700`} />
                     <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] border border-white/10 transition-transform duration-700 group-hover:-translate-y-2">
@@ -314,6 +320,14 @@ const Index = () => {
                         src={feature.screenshot} 
                         alt={feature.title} 
                         className="w-full h-auto"
+                      />
+                    </div>
+                    {/* Contextual Bubbo */}
+                    <div className="absolute -bottom-6 -right-6 w-20 h-20 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 animate-float-gentle" style={{ animationDelay: `${index * 0.5}s` }}>
+                      <img 
+                        src={feature.bubbo} 
+                        alt="Bubbo"
+                        className="w-full h-full object-contain drop-shadow-xl"
                       />
                     </div>
                   </div>
@@ -358,12 +372,18 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal direction="up">
             <div className="max-w-4xl mx-auto text-center">
-              {/* Floating Bubbo with enhanced glow */}
+              {/* Interactive Bubbo with enhanced effects */}
               <div className="relative inline-block mb-12">
                 <div className="absolute inset-0 -m-8 bg-gradient-radial from-bubly-violet/30 via-bubly-pink/15 to-transparent blur-2xl animate-breathe" />
                 <div className="absolute inset-0 -m-16 rounded-full border border-bubly-violet/10 animate-spin-slow" style={{ animationDuration: "30s" }} />
                 <div className="absolute inset-0 -m-24 rounded-full border border-bubly-pink/5 animate-spin-slow" style={{ animationDuration: "45s", animationDirection: "reverse" }} />
-                <Bubbo size="lg" className="relative animate-float-gentle drop-shadow-[0_20px_50px_rgba(167,139,250,0.4)]" />
+                <InteractiveBubbo 
+                  size="lg" 
+                  initialPose="default" 
+                  hoverPose="wave" 
+                  enableClick={true}
+                  showTooltip={true}
+                />
               </div>
               
               {/* Headline */}
