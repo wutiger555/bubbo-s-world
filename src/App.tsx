@@ -55,7 +55,7 @@ const PageLoadingFallback = () => (
         {/* Animated loader */}
         <div className="relative">
           <div className="absolute inset-0 -m-6 bg-gradient-radial from-bubly-violet/25 via-bubly-pink/15 to-transparent blur-2xl animate-breathe" />
-          
+
           <motion.div
             className="relative w-20 h-20 rounded-full"
             style={{
@@ -72,7 +72,7 @@ const PageLoadingFallback = () => (
               />
             </div>
           </motion.div>
-          
+
           {/* Floating particles */}
           {[0, 1, 2, 3].map((i) => (
             <motion.div
@@ -99,7 +99,7 @@ const PageLoadingFallback = () => (
             />
           ))}
         </div>
-        
+
         <motion.p
           className="text-sm text-muted-foreground/70 font-medium tracking-wide"
           animate={{ opacity: [0.4, 1, 0.4] }}
@@ -147,7 +147,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <AnimatedRoutes />
       </BrowserRouter>
     </TooltipProvider>
