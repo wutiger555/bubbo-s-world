@@ -64,8 +64,8 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Immersive */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Full Immersive Experience */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Layered backgrounds */}
         <GradientMesh />
         <AmbientOrbs />
@@ -73,81 +73,143 @@ const Index = () => {
         
         {/* Floating decorative Bubbos */}
         <FloatingBubbos />
-        
-        {/* Content with parallax */}
-        <div 
-          className="container mx-auto px-4 py-20 relative z-10"
-          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
-        >
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            {/* Text Content */}
+
+        {/* Main Hero Grid */}
+        <div className="container mx-auto px-4 py-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center min-h-[calc(100vh-120px)]">
+            
+            {/* Left Side - Main Content */}
             <div 
-              className="flex-1 text-center lg:text-left"
+              className="lg:col-span-5 text-center lg:text-left space-y-8"
               style={{ transform: `translateY(${scrollY * 0.05}px)` }}
             >
-              <div className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-6 animate-fade-in backdrop-blur-md">
-                <span className="mr-2 animate-pulse">✨</span>
-                Your Social Companion
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass backdrop-blur-xl border border-white/10 animate-fade-in">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-bubly-violet opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-bubly-violet"></span>
+                </span>
+                <span className="text-sm font-medium text-muted-foreground">Your AI Social Companion</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 animate-slide-up tracking-tight">
-                <span className="gradient-text">Manage contacts.</span>
-                <br />
-                <span className="text-foreground">Stay close.</span>
-              </h1>
+              {/* Main Headline - Larger & Bolder */}
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight animate-slide-up">
+                  <span className="block gradient-text">Never Forget</span>
+                  <span className="block text-foreground">Who Matters</span>
+                </h1>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed animate-slide-up" style={{ animationDelay: "0.1s" }}>
+                  Bubly helps you nurture every relationship with AI-powered reminders, personalized greetings, and smart contact management.
+                </p>
+              </div>
               
-              <p 
-                className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 animate-slide-up leading-relaxed"
-                style={{ animationDelay: "0.1s" }}
-              >
-                Bubly is your intelligent social assistant that helps you nurture relationships, 
-                send thoughtful greetings, and never forget the moments that matter.
-              </p>
-              
-              <div 
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" 
-                style={{ animationDelay: "0.2s" }}
-              >
+              {/* CTA Section */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: "0.2s" }}>
                 <a
                   href={APP_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-bubly text-white font-semibold transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(167,139,250,0.5)] hover:scale-[1.02] shadow-lg"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-bubly text-white font-semibold transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(167,139,250,0.6)] hover:scale-[1.02] shadow-xl"
                 >
-                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                   </svg>
-                  Download on App Store
+                  Get Free on App Store
                 </a>
                 
-                <Link
-                  to="/features"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-500 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                {/* QR Code - Desktop */}
+                <div className="hidden md:flex items-center gap-3 px-4 py-2 rounded-2xl glass backdrop-blur-xl border border-white/10 group hover:border-white/20 transition-all">
+                  <div className="p-1.5 bg-white rounded-lg">
+                    <img src={appQRCode} alt="QR Code" className="w-10 h-10" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs text-muted-foreground">Scan to</p>
+                    <p className="text-sm font-medium">Download</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="flex flex-wrap gap-6 justify-center lg:justify-start pt-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    {['🎉', '💝', '✨'].map((emoji, i) => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-bubly-sky/30 to-bubly-violet/30 border-2 border-background flex items-center justify-center text-sm">
+                        {emoji}
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-sm text-muted-foreground">Loved by users</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-bubly-violet">★★★★★</span>
+                  <span className="text-sm text-muted-foreground">5.0 Rating</span>
+                </div>
               </div>
             </div>
-            
-            {/* Bubbo Mascot with parallax */}
+
+            {/* Center - Bubbo Mascot */}
             <div 
-              className="flex-1 flex justify-center relative"
-              style={{ transform: `translateY(${scrollY * -0.15}px)` }}
+              className="lg:col-span-3 flex justify-center items-center relative order-first lg:order-none"
+              style={{ transform: `translateY(${scrollY * -0.1}px)` }}
             >
               <div className="relative">
-                {/* Animated orbital rings */}
-                <div className="absolute inset-0 -m-16 rounded-full border border-bubly-sky/10 animate-spin-slow" style={{ animationDuration: "25s" }} />
-                <div className="absolute inset-0 -m-24 rounded-full border border-bubly-violet/8 animate-spin-slow" style={{ animationDuration: "35s", animationDirection: "reverse" }} />
-                <div className="absolute inset-0 -m-32 rounded-full border border-bubly-pink/5 animate-spin-slow" style={{ animationDuration: "45s" }} />
+                {/* Orbital rings */}
+                <div className="absolute inset-0 -m-20 rounded-full border border-bubly-sky/15 animate-spin-slow" style={{ animationDuration: "20s" }} />
+                <div className="absolute inset-0 -m-32 rounded-full border border-bubly-violet/10 animate-spin-slow" style={{ animationDuration: "30s", animationDirection: "reverse" }} />
                 
-                {/* Interactive Bubbo that follows cursor */}
+                {/* Main Bubbo */}
                 <FollowCursorBubbo size="xl" />
+              </div>
+            </div>
+
+            {/* Right Side - App Screenshots Stack */}
+            <div 
+              className="lg:col-span-4 relative h-[500px] lg:h-[600px]"
+              style={{ transform: `translateY(${scrollY * -0.08}px)` }}
+            >
+              {/* Floating App Screenshots */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Back screenshot */}
+                <div className="absolute right-0 top-8 lg:top-4 w-48 lg:w-56 rounded-[1.5rem] overflow-hidden shadow-2xl border border-white/10 opacity-60 hover:opacity-90 transition-all duration-500 hover:-translate-y-2 hover:scale-105 z-10">
+                  <img src={screenshot6} alt="Calendar" className="w-full" />
+                </div>
                 
-                {/* Floating accent dots */}
-                <div className="absolute -top-4 -right-4 w-3 h-3 rounded-full bg-bubly-sky/60 animate-drift" />
-                <div className="absolute -bottom-2 -left-6 w-2 h-2 rounded-full bg-bubly-pink/50 animate-drift" style={{ animationDelay: "2s" }} />
-                <div className="absolute top-1/2 -right-8 w-2.5 h-2.5 rounded-full bg-bubly-violet/40 animate-drift" style={{ animationDelay: "4s" }} />
+                {/* Main screenshot */}
+                <div className="relative w-56 lg:w-64 rounded-[2rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(167,139,250,0.4)] border border-white/20 hover:-translate-y-3 transition-all duration-500 z-20 group">
+                  <div className="absolute -inset-1 bg-gradient-to-br from-bubly-sky/30 via-bubly-violet/20 to-bubly-pink/30 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img src={screenshot3} alt="Dashboard" className="w-full relative" />
+                </div>
+                
+                {/* Front screenshot */}
+                <div className="absolute left-0 bottom-8 lg:bottom-12 w-44 lg:w-52 rounded-[1.5rem] overflow-hidden shadow-xl border border-white/10 opacity-70 hover:opacity-100 transition-all duration-500 hover:-translate-y-2 hover:scale-105 z-30">
+                  <img src={screenshot4} alt="AI Greetings" className="w-full" />
+                </div>
+              </div>
+
+              {/* Floating Feature Cards */}
+              <div className="absolute -left-4 top-1/4 glass backdrop-blur-xl rounded-2xl p-3 border border-white/10 shadow-xl animate-float-gentle z-40 hidden lg:block">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-bubly-sky to-bubly-violet flex items-center justify-center text-white text-lg">
+                    🎂
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Upcoming</p>
+                    <p className="text-sm font-semibold">3 Birthdays</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute -right-4 bottom-1/4 glass backdrop-blur-xl rounded-2xl p-3 border border-white/10 shadow-xl animate-float-gentle z-40 hidden lg:block" style={{ animationDelay: "1.5s" }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-bubly-pink to-bubly-violet flex items-center justify-center text-white text-lg">
+                    ✨
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">AI Generated</p>
+                    <p className="text-sm font-semibold">Perfect Greeting</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -155,13 +217,10 @@ const Index = () => {
         
         {/* Scroll indicator */}
         <div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in"
-          style={{ 
-            animationDelay: "1s",
-            opacity: Math.max(0, 1 - scrollY / 200)
-          }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          style={{ opacity: Math.max(0, 1 - scrollY / 200) }}
         >
-          <span className="text-xs text-muted-foreground/50 tracking-widest uppercase">Scroll</span>
+          <span className="text-[10px] text-muted-foreground/40 tracking-[0.2em] uppercase">Explore</span>
           <div className="w-5 h-8 rounded-full border border-muted-foreground/20 flex justify-center pt-2">
             <div className="w-1 h-2 rounded-full bg-muted-foreground/40 animate-bounce-soft" />
           </div>
