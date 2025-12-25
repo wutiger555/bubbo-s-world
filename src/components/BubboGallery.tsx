@@ -13,15 +13,15 @@ import bubboBusiness from "@/assets/bubbo-business.png";
 import bubboProfessor from "@/assets/bubbo-professor.png";
 
 const bubboVariants = [
-  { id: "cool", image: bubboCool, label: "酷酷 Bubbo", description: "隨時保持帥氣" },
-  { id: "music", image: bubboMusic, label: "音樂 Bubbo", description: "跟著節奏搖擺" },
-  { id: "vr", image: bubboVr, label: "科技 Bubbo", description: "探索未來世界" },
-  { id: "sprout", image: bubboSprout, label: "萌芽 Bubbo", description: "充滿生機活力" },
-  { id: "curious", image: bubboCurious, label: "好奇 Bubbo", description: "對一切感興趣" },
-  { id: "sport", image: bubboSport, label: "運動 Bubbo", description: "熱愛健康生活" },
-  { id: "artist", image: bubboArtist, label: "藝術 Bubbo", description: "創意無限大" },
-  { id: "business", image: bubboBusiness, label: "商務 Bubbo", description: "專業又可靠" },
-  { id: "professor", image: bubboProfessor, label: "教授 Bubbo", description: "智慧的象徵" },
+  { id: "cool", image: bubboCool, label: "Cool", trait: "Always stylish" },
+  { id: "music", image: bubboMusic, label: "Groovy", trait: "Rhythm lover" },
+  { id: "vr", image: bubboVr, label: "Techy", trait: "Future explorer" },
+  { id: "sprout", image: bubboSprout, label: "Fresh", trait: "Full of life" },
+  { id: "curious", image: bubboCurious, label: "Curious", trait: "Wonder seeker" },
+  { id: "sport", image: bubboSport, label: "Active", trait: "Health champion" },
+  { id: "artist", image: bubboArtist, label: "Creative", trait: "Imagination unlimited" },
+  { id: "business", image: bubboBusiness, label: "Pro", trait: "Always reliable" },
+  { id: "professor", image: bubboProfessor, label: "Wise", trait: "Knowledge keeper" },
 ];
 
 export const BubboGallery = () => {
@@ -33,98 +33,136 @@ export const BubboGallery = () => {
     if (isHovered) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % bubboVariants.length);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(interval);
   }, [isHovered]);
 
   return (
-    <div className="relative py-16">
-      {/* Background glow */}
-      <div className="absolute inset-0 bg-gradient-radial from-bubly-violet/10 via-transparent to-transparent pointer-events-none" />
+    <div className="relative">
+      {/* Ambient background */}
+      <div className="absolute inset-0 bg-gradient-radial from-bubly-violet/8 via-transparent to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-muted-foreground mb-4 tracking-wide uppercase animate-fade-in">
-            Meet The Bubbos
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            每個人都有專屬的 <span className="gradient-text">Bubbo</span>
+        <div className="text-center mb-16">
+          <p className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground/60 mb-4">
+            Meet Your Companion
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5 tracking-tight">
+            Find Your <span className="gradient-text">Bubbo</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            選擇最適合你的 Bubbo 夥伴，讓它陪伴你維繫每一份珍貴的關係
+          <p className="text-muted-foreground max-w-md mx-auto text-base leading-relaxed">
+            Every personality deserves a perfect companion. 
+            Choose the one that resonates with you.
           </p>
         </div>
 
         {/* Main showcase */}
         <div 
-          className="relative max-w-5xl mx-auto"
+          className="relative max-w-4xl mx-auto"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Center featured Bubbo */}
-          <div className="flex justify-center mb-12">
-            <div className="relative">
-              {/* Animated glow rings */}
-              <div className="absolute inset-0 -m-8 rounded-full bg-gradient-to-br from-bubly-sky/20 via-bubly-violet/20 to-bubly-pink/20 blur-3xl animate-breathe" />
-              <div className="absolute inset-0 -m-16 rounded-full border border-bubly-violet/10 animate-spin-slow" style={{ animationDuration: "20s" }} />
-              <div className="absolute inset-0 -m-24 rounded-full border border-bubly-sky/5 animate-spin-slow" style={{ animationDuration: "30s", animationDirection: "reverse" }} />
+          {/* Orbital display */}
+          <div className="relative flex justify-center items-center min-h-[400px] md:min-h-[500px]">
+            
+            {/* Center featured Bubbo */}
+            <div className="relative z-10">
+              {/* Soft ambient glow */}
+              <div className="absolute inset-0 -m-12 bg-gradient-to-br from-bubly-sky/15 via-bubly-violet/10 to-bubly-pink/15 rounded-full blur-3xl animate-breathe" />
               
               {/* Featured Bubbo */}
-              <div className="relative w-48 h-48 md:w-64 md:h-64 transition-all duration-700">
+              <div className="relative w-44 h-44 md:w-56 md:h-56">
                 {bubboVariants.map((variant, index) => (
                   <img
                     key={variant.id}
                     src={variant.image}
                     alt={variant.label}
                     className={cn(
-                      "absolute inset-0 w-full h-full object-contain transition-all duration-700 drop-shadow-[0_20px_40px_rgba(167,139,250,0.3)]",
+                      "absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out",
+                      "drop-shadow-[0_20px_50px_rgba(167,139,250,0.25)]",
                       index === activeIndex 
                         ? "opacity-100 scale-100 animate-float-gentle" 
-                        : "opacity-0 scale-90"
+                        : "opacity-0 scale-95 blur-sm"
                     )}
                   />
                 ))}
               </div>
 
-              {/* Label */}
-              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center">
-                <p className="font-semibold text-lg gradient-text transition-all duration-500">
+              {/* Label below */}
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-center w-48">
+                <p className="text-xl font-semibold text-foreground tracking-wide transition-all duration-500">
                   {bubboVariants[activeIndex].label}
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {bubboVariants[activeIndex].description}
+                <p className="text-sm text-muted-foreground/70 mt-1 italic">
+                  {bubboVariants[activeIndex].trait}
                 </p>
               </div>
             </div>
+
+            {/* Orbiting Bubbos */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {bubboVariants.map((variant, index) => {
+                const angle = (index / bubboVariants.length) * 360 - 90;
+                const radius = 180; // px from center
+                const radiusMd = 220;
+                
+                return (
+                  <button
+                    key={variant.id}
+                    onClick={() => setActiveIndex(index)}
+                    className={cn(
+                      "absolute transition-all duration-500 ease-out",
+                      "hover:scale-125 focus:outline-none focus:scale-125",
+                      index === activeIndex ? "opacity-0 scale-0" : "opacity-100"
+                    )}
+                    style={{
+                      transform: `rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+                    }}
+                  >
+                    <div className="hidden md:block" style={{
+                      transform: `rotate(${angle}deg) translateX(${radiusMd - radius}px) rotate(-${angle}deg)`,
+                    }}>
+                      <img
+                        src={variant.image}
+                        alt={variant.label}
+                        className={cn(
+                          "w-14 h-14 md:w-16 md:h-16 object-contain transition-all duration-500",
+                          "opacity-40 hover:opacity-90",
+                          "drop-shadow-[0_8px_20px_rgba(167,139,250,0.15)]",
+                          "hover:drop-shadow-[0_12px_30px_rgba(167,139,250,0.3)]"
+                        )}
+                      />
+                    </div>
+                    <div className="md:hidden">
+                      <img
+                        src={variant.image}
+                        alt={variant.label}
+                        className={cn(
+                          "w-12 h-12 object-contain transition-all duration-500",
+                          "opacity-40 hover:opacity-90",
+                          "drop-shadow-[0_8px_20px_rgba(167,139,250,0.15)]"
+                        )}
+                      />
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Bubbo selector carousel */}
-          <div className="flex justify-center gap-3 md:gap-4 flex-wrap mt-16">
-            {bubboVariants.map((variant, index) => (
+          {/* Progress indicators */}
+          <div className="flex justify-center gap-2 mt-20">
+            {bubboVariants.map((_, index) => (
               <button
-                key={variant.id}
+                key={index}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  "relative w-16 h-16 md:w-20 md:h-20 rounded-2xl transition-all duration-500 group",
-                  "hover:scale-110 hover:-translate-y-1",
+                  "h-0.5 rounded-full transition-all duration-500",
                   index === activeIndex 
-                    ? "scale-105 ring-2 ring-primary ring-offset-2 ring-offset-background shadow-lg shadow-primary/20" 
-                    : "glass hover:bg-white/20"
+                    ? "w-8 bg-gradient-to-r from-bubly-sky via-bubly-violet to-bubly-pink" 
+                    : "w-2 bg-muted-foreground/20 hover:bg-muted-foreground/40"
                 )}
-              >
-                <img
-                  src={variant.image}
-                  alt={variant.label}
-                  className={cn(
-                    "w-full h-full object-contain p-1 transition-all duration-500",
-                    index === activeIndex ? "animate-wiggle" : "group-hover:scale-105"
-                  )}
-                />
-                {/* Active indicator dot */}
-                {index === activeIndex && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                )}
-              </button>
+              />
             ))}
           </div>
         </div>
@@ -133,13 +171,13 @@ export const BubboGallery = () => {
   );
 };
 
-// Floating Bubbos for decoration
+// Floating Bubbos for decoration - more subtle
 export const FloatingBubbos = () => {
   const decorBubbos = [
-    { image: bubboCool, delay: 0, position: "top-20 left-[10%]", size: "w-12 h-12" },
-    { image: bubboMusic, delay: 2, position: "top-40 right-[15%]", size: "w-10 h-10" },
-    { image: bubboSprout, delay: 4, position: "bottom-32 left-[20%]", size: "w-14 h-14" },
-    { image: bubboArtist, delay: 1, position: "bottom-20 right-[10%]", size: "w-11 h-11" },
+    { image: bubboCool, delay: 0, position: "top-24 left-[8%]", size: "w-10 h-10", opacity: "opacity-[0.08]" },
+    { image: bubboMusic, delay: 2.5, position: "top-36 right-[12%]", size: "w-8 h-8", opacity: "opacity-[0.06]" },
+    { image: bubboSprout, delay: 4, position: "bottom-40 left-[15%]", size: "w-12 h-12", opacity: "opacity-[0.07]" },
+    { image: bubboArtist, delay: 1.5, position: "bottom-28 right-[8%]", size: "w-9 h-9", opacity: "opacity-[0.05]" },
   ];
 
   return (
@@ -148,16 +186,16 @@ export const FloatingBubbos = () => {
         <div
           key={index}
           className={cn(
-            "absolute pointer-events-none opacity-20 hover:opacity-40 transition-opacity duration-500",
+            "absolute pointer-events-none transition-opacity duration-1000",
             bubbo.position,
-            bubbo.size
+            bubbo.size,
+            bubbo.opacity
           )}
-          style={{ animationDelay: `${bubbo.delay}s` }}
         >
           <img
             src={bubbo.image}
             alt=""
-            className="w-full h-full object-contain animate-float-gentle"
+            className="w-full h-full object-contain animate-float-gentle blur-[0.5px]"
             style={{ animationDelay: `${bubbo.delay}s` }}
           />
         </div>
