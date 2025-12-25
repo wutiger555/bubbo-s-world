@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
-import { Bubbo } from "@/components/Bubbo";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
+import { InteractiveBubbo } from "@/components/InteractiveBubbo";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -317,10 +317,16 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal direction="up">
             <div className="max-w-3xl mx-auto text-center">
-              {/* Bubbo */}
+              {/* Interactive Bubbo */}
               <div className="relative inline-block mb-10">
                 <div className="absolute inset-0 -m-6 bg-gradient-radial from-bubly-violet/25 via-bubly-pink/15 to-transparent blur-2xl animate-breathe" />
-                <Bubbo size="lg" className="relative animate-float-gentle drop-shadow-[0_20px_50px_rgba(167,139,250,0.4)]" />
+                <InteractiveBubbo 
+                  size="lg" 
+                  initialPose="default" 
+                  hoverPose="wave" 
+                  enableClick={true}
+                  showTooltip={true}
+                />
               </div>
               
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
