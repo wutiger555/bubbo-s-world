@@ -1,179 +1,279 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
+// Import multiple Bubbo poses for animation variety
 import bubboLoading from "@/assets/bubbo-loading.png";
+import bubboCurious from "@/assets/bubbo-curious.png";
+import bubboWave from "@/assets/bubbo-wave.png";
+import bubboThinking from "@/assets/bubbo-thinking.png";
+
+// Bubbo poses array for cycling
+const bubboPoses = [
+  { src: bubboLoading, label: "Loading..." },
+  { src: bubboCurious, label: "Almost there!" },
+  { src: bubboWave, label: "Hi there!" },
+  { src: bubboThinking, label: "Thinking..." },
+];
+
+// Cute loading messages
+const loadingMessages = [
+  "Bubbo is preparing something special ✨",
+  "Gathering your content...",
+  "Almost ready! 🎉",
+  "Just a moment...",
+  "Bubbo is on it! 💪",
+];
 
 export const PageLoader = () => {
+  const [poseIndex, setPoseIndex] = useState(0);
+  const [messageIndex, setMessageIndex] = useState(0);
+
+  // Cycle through Bubbo poses
+  useEffect(() => {
+    const poseInterval = setInterval(() => {
+      setPoseIndex((prev) => (prev + 1) % bubboPoses.length);
+    }, 2000);
+
+    const messageInterval = setInterval(() => {
+      setMessageIndex((prev) => (prev + 1) % loadingMessages.length);
+    }, 2500);
+
+    return () => {
+      clearInterval(poseInterval);
+      clearInterval(messageInterval);
+    };
+  }, []);
+
+  const currentPose = bubboPoses[poseIndex];
+
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-lg"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex flex-col items-center gap-6">
-        {/* Bubbo Loading Animation */}
+      {/* Animated background orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-bubly-violet/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-bubly-pink/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, -40, 0],
+            y: [0, 40, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-1/3 right-1/3 w-32 h-32 bg-bubly-sky/10 rounded-full blur-2xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+      </div>
+
+      <div className="flex flex-col items-center gap-6 relative z-10">
+        {/* Bubbo Loading Animation - Main Container */}
         <div className="relative">
-          {/* Ambient glow rings */}
+          {/* Outer glow pulse */}
           <motion.div
-            className="absolute inset-0 -m-8 rounded-full bg-gradient-radial from-bubly-violet/30 via-bubly-pink/15 to-transparent blur-2xl"
+            className="absolute inset-0 -m-12 rounded-full bg-gradient-radial from-bubly-violet/25 via-bubly-pink/10 to-transparent blur-2xl"
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 0.8, 0.5],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          
-          {/* Outer orbit ring */}
-          <motion.div
-            className="absolute inset-0 -m-6 rounded-full border border-bubly-violet/20"
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            {/* Orbiting dot */}
-            <motion.div
-              className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-bubly-violet/60"
-              animate={{
-                scale: [1, 1.5, 1],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
-          
-          {/* Inner orbit ring */}
-          <motion.div
-            className="absolute inset-0 -m-3 rounded-full border border-bubly-pink/15"
-            animate={{ rotate: -360 }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-          
-          {/* Bubbo image with breathing animation */}
-          <motion.div
-            className="relative"
-            animate={{
-              y: [0, -8, 0],
-              scale: [1, 1.02, 1],
+              scale: [1, 1.3, 1],
+              opacity: [0.4, 0.7, 0.4],
             }}
             transition={{
               duration: 2.5,
               repeat: Infinity,
               ease: "easeInOut",
             }}
+          />
+
+          {/* Spinning orbit rings */}
+          <motion.div
+            className="absolute inset-0 -m-10 rounded-full border-2 border-dashed border-bubly-violet/20"
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "linear",
+            }}
           >
-            <motion.img
-              src={bubboLoading}
-              alt="Loading..."
-              className="w-24 h-24 md:w-28 md:h-28 object-contain drop-shadow-[0_10px_30px_rgba(167,139,250,0.4)]"
-              animate={{
-                filter: [
-                  "drop-shadow(0 10px 30px rgba(167,139,250,0.4))",
-                  "drop-shadow(0 15px 40px rgba(167,139,250,0.6))",
-                  "drop-shadow(0 10px 30px rgba(167,139,250,0.4))",
-                ],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            {/* Orbiting particles */}
+            <motion.div
+              className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-bubly-violet to-bubly-pink"
+              animate={{ scale: [1, 1.4, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
             />
           </motion.div>
-          
-          {/* Floating Z's animation */}
-          <div className="absolute -top-2 -right-2">
-            {[0, 1, 2].map((i) => (
-              <motion.span
+
+          <motion.div
+            className="absolute inset-0 -m-6 rounded-full border border-bubly-pink/15"
+            animate={{ rotate: -360 }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <motion.div
+              className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-bubly-sky/60"
+            />
+          </motion.div>
+
+          {/* Bubbo image with pose transition */}
+          <motion.div
+            className="relative"
+            animate={{
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={poseIndex}
+                src={currentPose.src}
+                alt="Bubbo Loading"
+                className="w-28 h-28 md:w-36 md:h-36 object-contain"
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: 0,
+                  filter: [
+                    "drop-shadow(0 10px 30px rgba(167,139,250,0.4))",
+                    "drop-shadow(0 15px 40px rgba(236,72,153,0.5))",
+                    "drop-shadow(0 10px 30px rgba(167,139,250,0.4))",
+                  ],
+                }}
+                exit={{ opacity: 0, scale: 0.8, rotate: 10 }}
+                transition={{
+                  opacity: { duration: 0.3 },
+                  scale: { duration: 0.3 },
+                  rotate: { duration: 0.3 },
+                  filter: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                }}
+              />
+            </AnimatePresence>
+
+            {/* Excitement sparkles around Bubbo */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
                 key={i}
-                className="absolute text-bubly-violet/60 font-bold"
+                className="absolute w-1.5 h-1.5 rounded-full"
                 style={{
-                  fontSize: `${10 + i * 4}px`,
-                  right: `${i * 8}px`,
-                  top: `${i * -10}px`,
+                  background: i % 2 === 0 ? "#a78bfa" : "#f472b6",
+                  top: `${20 + Math.sin(i * 60 * Math.PI / 180) * 50}%`,
+                  left: `${50 + Math.cos(i * 60 * Math.PI / 180) * 60}%`,
                 }}
                 animate={{
+                  scale: [0, 1.2, 0],
                   opacity: [0, 1, 0],
-                  y: [10, -10, -20],
-                  x: [0, 5, 10],
+                  y: [0, -15, -25],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 1.8,
                   repeat: Infinity,
-                  delay: i * 0.4,
+                  delay: i * 0.25,
                   ease: "easeOut",
                 }}
-              >
-                z
-              </motion.span>
+              />
             ))}
-          </div>
-          
-          {/* Sparkle particles */}
-          {[...Array(4)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-bubly-sky"
-              style={{
-                top: `${20 + Math.random() * 60}%`,
-                left: `${10 + Math.random() * 80}%`,
-              }}
-              animate={{
-                scale: [0, 1, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                delay: i * 0.3,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
+          </motion.div>
+
+          {/* Floating emojis around Bubbo */}
+          <motion.div
+            className="absolute -top-4 -right-6 text-xl"
+            animate={{
+              y: [0, -8, 0],
+              rotate: [0, 10, 0],
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            ✨
+          </motion.div>
+          <motion.div
+            className="absolute -bottom-2 -left-6 text-lg"
+            animate={{
+              y: [0, -6, 0],
+              rotate: [0, -10, 0],
+            }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          >
+            💝
+          </motion.div>
+          <motion.div
+            className="absolute top-1/2 -right-8 text-lg"
+            animate={{
+              x: [0, 5, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          >
+            🌟
+          </motion.div>
         </div>
-        
-        {/* Loading text with gradient */}
-        <motion.div
-          className="flex items-center gap-1"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <span className="text-sm font-medium gradient-text">Loading</span>
-          <motion.span className="flex gap-0.5">
+
+        {/* Loading message with typewriter effect */}
+        <div className="text-center space-y-2">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={messageIndex}
+              className="text-sm md:text-base font-medium text-muted-foreground"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              {loadingMessages[messageIndex]}
+            </motion.p>
+          </AnimatePresence>
+
+          {/* Animated dots */}
+          <motion.div
+            className="flex items-center justify-center gap-1.5"
+            animate={{ opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
-                className="w-1 h-1 rounded-full bg-bubly-violet"
+                className="w-2 h-2 rounded-full bg-gradient-to-r from-bubly-violet to-bubly-pink"
                 animate={{
-                  y: [0, -4, 0],
+                  y: [0, -6, 0],
+                  scale: [1, 1.2, 1],
                 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.5,
                   repeat: Infinity,
-                  delay: i * 0.15,
+                  delay: i * 0.12,
                   ease: "easeInOut",
                 }}
               />
             ))}
-          </motion.span>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );
 };
+
 
 // Minimal top progress bar
 export const TopProgressBar = () => {

@@ -72,6 +72,7 @@ bubbo-s-world/
 │   │   ├── AIAssistantDemo.tsx   # ⭐ AI 助手互動 Demo
 │   │   ├── BubboGallery.tsx      # Bubbo 圖庫
 │   │   ├── InteractiveBubbo.tsx  # 互動式 Bubbo
+│   │   ├── PageLoader.tsx        # 🆕 Bubbo Loading 動畫
 │   │   ├── Layout.tsx            # 頁面版型
 │   │   ├── Navbar.tsx            # 導覽列
 │   │   └── ui/                   # shadcn-ui 元件
@@ -203,11 +204,22 @@ import newScreenshot from "@/assets/new-screenshot.png";
 ### 修改 Bubbo 動畫
 
 Bubbo 的不同姿勢圖片：
+- `bubbo.png` / `bubbo-logo.png` - 預設姿勢
 - `bubbo-wave.png` - 揮手
-- `bubbo-thinking.png` - 思考
+- `bubbo-thinking.png` - 思考中
 - `bubbo-point.png` - 指著你
-- `bubbo-sleepy.png` - 睡覺
+- `bubbo-loading.png` / `bubbo-sleepy.png` - 睡覺（用於 Loading）
+- `bubbo-curious.png` - 好奇
 - `bubbo-no-idea.png` - 不知道
+- `bubbo-cool.png` - 酷炫墨鏡
+- `bubbo-music.png` - 音樂 DJ
+- `bubbo-artist.png` - 藝術家
+- `bubbo-professor.png` - 教授
+- `bubbo-sport.png` - 運動
+- `bubbo-business.png` - 商務
+- `bubbo-vr.png` - VR 科技
+- `bubbo-sprout.png` - 發芽新萌
+- `bubbo-xmas-*.png` - 聖誕系列（deer/gift/santa/socks/tree）
 
 使用方式：
 ```typescript
@@ -367,6 +379,24 @@ npm run build
 
 ## 🎉 更新日誌
 
+### v1.2.2 (2025-12-26)
+- 🎨 **Hero Section 手機版大幅優化**
+  - 新增專屬手機版 Bubbo 區塊，進入頁面即可看到吉祥物
+  - 文字內容緊湊化，確保首屏顯示完整
+  - 調整響應式間距與字體大小
+- ✨ **Loading 動畫全新設計**
+  - Bubbo 姿態輪播（loading → curious → wave → thinking）
+  - 可愛的載入訊息輪播動畫
+  - 動態背景光球與閃爍粒子效果
+  - 浮動 emoji 裝飾（✨💝🌟）
+- 📱 **Contact 頁面簡化**
+  - 移除 email 聯繫方式，僅保留 Tally 回饋表單
+  - 精簡側邊欄，專注於回饋表單體驗
+- 🔧 **About 頁面 Meet the Bubbos 修復**
+  - 修正手機版 Bubbo 圖片過大問題
+  - 使用標準 Tailwind 尺寸類別
+  - 新增卡片樣式與光暈效果
+
 ### v1.2.1 (2025-12-26)
 - 🎨 **Features 頁面 Additional Features 區塊全新設計**
   - 採用現代化 **Bento Grid** 非對稱佈局
@@ -394,3 +424,4 @@ npm run build
 - 🎉 初版發布
 - 🏠 首頁設計完成
 - 📄 所有功能頁面上線
+

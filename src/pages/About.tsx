@@ -81,7 +81,7 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-bubly-violet/5 via-transparent to-transparent pointer-events-none" />
         <div className="absolute top-1/3 left-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-bubly-sky/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/3 right-1/4 w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-bubly-pink/10 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16 lg:gap-24">
             {/* Mobile: Bubbo first for better visual hierarchy */}
@@ -90,9 +90,9 @@ const About = () => {
                 <div className="absolute inset-0 -m-8 bg-gradient-radial from-bubly-violet/25 via-bubly-pink/15 to-transparent blur-2xl animate-breathe" />
                 <div className="absolute inset-0 -m-12 rounded-full border border-bubly-violet/10 animate-spin-slow" style={{ animationDuration: "30s" }} />
                 <div className="relative">
-                  <img 
-                    src={bubboMain} 
-                    alt="Bubbo" 
+                  <img
+                    src={bubboMain}
+                    alt="Bubbo"
                     className="w-40 h-40 object-contain animate-float-gentle drop-shadow-[0_20px_40px_rgba(167,139,250,0.4)]"
                   />
                 </div>
@@ -118,7 +118,7 @@ const About = () => {
                 Like bubbles, relationships need tender attention to shine bright.
               </p>
               <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
-                We created Bubly to help everyone maintain meaningful relationships 
+                We created Bubly to help everyone maintain meaningful relationships
                 in this busy world—making every greeting timely and every care remembered.
               </p>
             </ScrollReveal>
@@ -130,9 +130,9 @@ const About = () => {
                 <div className="absolute inset-0 -m-20 rounded-full border border-bubly-violet/10 animate-spin-slow" style={{ animationDuration: "30s" }} />
                 <div className="absolute inset-0 -m-32 rounded-full border border-bubly-pink/5 animate-spin-slow" style={{ animationDuration: "45s", animationDirection: "reverse" }} />
                 <div className="relative">
-                  <img 
-                    src={bubboMain} 
-                    alt="Bubbo" 
+                  <img
+                    src={bubboMain}
+                    alt="Bubbo"
                     className="w-64 h-64 object-contain animate-float-gentle drop-shadow-[0_30px_60px_rgba(167,139,250,0.4)]"
                   />
                 </div>
@@ -154,7 +154,7 @@ const About = () => {
       {/* Our Story - Premium */}
       <section className="py-16 md:py-24 overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bubly-violet/3 to-transparent pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 relative">
           <ScrollReveal className="max-w-4xl mx-auto">
             <div className="text-center mb-6 md:mb-12">
@@ -165,10 +165,10 @@ const About = () => {
                 The <span className="gradient-text">Story</span> Behind Bubly
               </h2>
             </div>
-            
+
             <div className="relative">
               <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-bubly-sky/10 via-bubly-violet/5 to-bubly-pink/10 rounded-2xl md:rounded-3xl blur-xl md:blur-2xl opacity-50" />
-              
+
               <div className="relative p-5 md:p-12 rounded-2xl md:rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm">
                 <div className="space-y-4 md:space-y-6 text-sm md:text-lg text-muted-foreground leading-relaxed">
                   <p>
@@ -205,9 +205,9 @@ const About = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 max-w-5xl mx-auto">
             {values.map((value, index) => (
-              <ScrollReveal 
-                key={value.title} 
-                delay={index * 100} 
+              <ScrollReveal
+                key={value.title}
+                delay={index * 100}
                 direction="up"
                 className="group"
               >
@@ -231,7 +231,7 @@ const About = () => {
       {/* Meet the Bubbos - Horizontal Scroll on Mobile */}
       <section className="py-12 md:py-24 overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bubly-pink/3 to-transparent pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 relative">
           <ScrollReveal className="text-center mb-8 md:mb-16">
             <span className="inline-block px-3 md:px-4 py-1 md:py-1.5 rounded-full glass text-[10px] md:text-xs font-medium text-muted-foreground mb-3 md:mb-4 tracking-wide uppercase">
@@ -245,34 +245,35 @@ const About = () => {
             </p>
           </ScrollReveal>
 
-          {/* Mobile: Horizontal Scroll */}
+          {/* Mobile: Horizontal Scroll with proper sizing */}
           <div className="md:hidden">
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
+            <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
               {[
-                { img: bubboMain, name: "Original", size: "w-20 h-20" },
-                { img: bubboCool, name: "Cool", size: "w-18 h-18" },
-                { img: bubboMusic, name: "Music", size: "w-18 h-18" },
-                { img: bubboArtist, name: "Artist", size: "w-18 h-18" },
-                { img: bubboProfessor, name: "Professor", size: "w-18 h-18" },
-                { img: bubboSport, name: "Sport", size: "w-18 h-18" },
+                { img: bubboMain, name: "Original" },
+                { img: bubboCool, name: "Cool" },
+                { img: bubboMusic, name: "Music" },
+                { img: bubboArtist, name: "Artist" },
+                { img: bubboProfessor, name: "Professor" },
+                { img: bubboSport, name: "Sport" },
               ].map((bubbo, index) => (
                 <div key={bubbo.name} className="flex-shrink-0 snap-center">
-                  <div className="flex flex-col items-center">
-                    <div className="relative">
-                      <img 
-                        src={bubbo.img} 
+                  <div className="flex flex-col items-center p-3 rounded-xl bg-white/[0.02] border border-white/5 w-[100px]">
+                    <div className="relative w-16 h-16 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-gradient-radial from-bubly-violet/15 to-transparent blur-lg rounded-full" />
+                      <img
+                        src={bubbo.img}
                         alt={bubbo.name}
-                        className={`${bubbo.size} object-contain`}
+                        className="w-14 h-14 object-contain relative z-10"
                       />
                     </div>
-                    <span className="mt-2 text-[10px] font-medium text-muted-foreground/60">
+                    <span className="mt-2 text-[10px] font-medium text-muted-foreground/70 text-center">
                       {bubbo.name}
                     </span>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="text-center text-xs text-muted-foreground/50 mt-1">← 左右滑動查看更多 →</p>
+            <p className="text-center text-[10px] text-muted-foreground/40 mt-2">← Swipe to see more →</p>
           </div>
 
           {/* Desktop: Flex wrap */}
@@ -285,17 +286,17 @@ const About = () => {
               { img: bubboProfessor, name: "Professor", size: "w-24 h-24" },
               { img: bubboSport, name: "Sport", size: "w-24 h-24" },
             ].map((bubbo, index) => (
-              <ScrollReveal 
-                key={bubbo.name} 
-                delay={index * 80} 
+              <ScrollReveal
+                key={bubbo.name}
+                delay={index * 80}
                 direction="up"
                 className="group"
               >
                 <div className="flex flex-col items-center">
                   <div className="relative">
                     <div className="absolute inset-0 -m-2 bg-gradient-radial from-bubly-violet/20 via-transparent to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <img 
-                      src={bubbo.img} 
+                    <img
+                      src={bubbo.img}
                       alt={bubbo.name}
                       className={`${bubbo.size} object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2`}
                     />
@@ -328,13 +329,13 @@ const About = () => {
           <ScrollReveal delay={200} className="max-w-3xl mx-auto">
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-br from-bubly-sky/5 via-bubly-violet/5 to-bubly-pink/5 rounded-2xl md:rounded-3xl blur-xl" />
-              
+
               <div className="relative rounded-xl md:rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden">
                 <Accordion type="single" collapsible className="w-full">
                   {faqs.map((faq, index) => (
-                    <AccordionItem 
-                      key={index} 
-                      value={`item-${index}`} 
+                    <AccordionItem
+                      key={index}
+                      value={`item-${index}`}
                       className="border-white/5 last:border-0"
                     >
                       <AccordionTrigger className="text-left px-4 md:px-6 py-4 md:py-5 hover:no-underline hover:bg-white/5 transition-colors duration-300 text-sm md:text-base font-medium">
@@ -357,30 +358,30 @@ const About = () => {
         {/* Ambient backgrounds */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bubly-violet/5 to-bubly-violet/10 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-bubly-violet/20 via-bubly-pink/10 to-transparent blur-3xl opacity-60 pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal direction="up">
             <div className="max-w-3xl mx-auto text-center">
               {/* Interactive Bubbo */}
               <div className="relative inline-block mb-10">
                 <div className="absolute inset-0 -m-6 bg-gradient-radial from-bubly-violet/25 via-bubly-pink/15 to-transparent blur-2xl animate-breathe" />
-                <InteractiveBubbo 
-                  size="lg" 
-                  initialPose="default" 
-                  hoverPose="wave" 
+                <InteractiveBubbo
+                  size="lg"
+                  initialPose="default"
+                  hoverPose="wave"
                   enableClick={true}
                   showTooltip={true}
                 />
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 Join the <span className="gradient-text">Bubly Family</span>
               </h2>
-              
+
               <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
                 Start nurturing your relationships today with Bubbo by your side.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                   href="https://apps.apple.com/app/bubly-social-assistant/id6754884488"
@@ -389,11 +390,11 @@ const About = () => {
                   className="group inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-gradient-bubly text-white font-semibold transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(167,139,250,0.5)] hover:scale-[1.03] shadow-xl"
                 >
                   <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                   </svg>
                   Download Free on App Store
                 </a>
-                
+
                 <Link
                   to="/contact"
                   className="group inline-flex items-center gap-2 px-8 py-5 text-muted-foreground hover:text-foreground font-medium transition-all duration-300"
